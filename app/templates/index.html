@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>StayHappy</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <header>
+    <h1>StayHappy</h1>
+    <div id="auth-status"></div>
+  </header>
+
+  <!-- AUTH SECTION -->
+  <section id="auth-section">
+    <h2>Login / Register</h2>
+    <input type="email" id="email" placeholder="Email">
+    <input type="password" id="password" placeholder="Password">
+    <button onclick="register()">Register</button>
+    <button onclick="login()">Login</button>
+    <p id="auth-message"></p>
+  </section>
+
+  <!-- MAIN APP (hidden until logged in) -->
+  <main id="app-section" style="display:none;">
+
+    <section id="journal-section">
+      <h2>Journal</h2>
+      <textarea id="journal-text" placeholder="How are you feeling today?"></textarea>
+      <button onclick="submitJournal()">Save Entry</button>
+      <p id="journal-message"></p>
+      <div id="journal-list"></div>
+    </section>
+
+    <section id="mood-section">
+      <h2>Mood Tracker</h2>
+      <label>Score (1-10): <input type="number" id="mood-score" min="1" max="10"></label>
+      <button onclick="logMood()">Log Mood</button>
+      <canvas id="moodChart" height="100"></canvas>
+    </section>
+
+    <section id="chat-section">
+      <h2>Chat Support</h2>
+      <div id="chat-window"></div>
+      <input type="text" id="chat-input" placeholder="Type a message...">
+      <button onclick="sendChat()">Send</button>
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
